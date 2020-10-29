@@ -1,0 +1,26 @@
+proc means maxdec=2 data=WORK.IMPORT chartype mean std min max median sum vardef=df clm 
+		alpha=0.05 skewness qmethod=os;
+	var Curr_Int_Chg Teach_Learn_Eff Ass_Stu_Learn;
+	class Collab_Teach_Rtg;
+run;
+
+proc univariate data=WORK.IMPORT vardef=df noprint;
+	var Curr_Int_Chg Teach_Learn_Eff Ass_Stu_Learn;
+	class Collab_Teach_Rtg;
+	histogram Curr_Int_Chg Teach_Learn_Eff Ass_Stu_Learn / normal(noprint);
+	inset mean std min max median sum skewness / position=nw;
+run;
+
+proc sort data=WORK.IMPORT out=WORK.TempSorted2236;
+	by Collab_Teach_Rtg;
+run;
+
+proc boxplot data=WORK.TempSorted2236;
+	plot (Curr_Int_Chg Teach_Learn_Eff Ass_Stu_Learn)*Collab_Teach_Rtg / 
+		boxstyle=schematic;
+	inset mean stddev min max / position=nw;
+run;
+
+proc datasets library=WORK noprint;
+	delete TempSorted2236;
+	run;
