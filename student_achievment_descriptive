@@ -1,0 +1,28 @@
+ods noproctitle;
+ods graphics / imagemap=on;
+
+proc means maxdec=2 data=WORK.IMPORT1 chartype mean std min max median sum vardef=df clm 
+		alpha=0.05 skewness qmethod=os;
+	var Rigor Collab_Teachers Supp_Env;
+	class Stu_Ach_Rat;
+run;
+
+proc univariate data=WORK.IMPORT1 vardef=df noprint;
+	var Rigor Collab_Teachers Supp_Env;
+	class Stu_Ach_Rat;
+	histogram Rigor Collab_Teachers Supp_Env / normal(noprint);
+	inset mean std min max median sum skewness / position=nw;
+run;
+
+proc sort data=WORK.IMPORT1 out=WORK.TempSorted2236;
+	by Stu_Ach_Rat;
+run;
+
+proc boxplot data=WORK.TempSorted2236;
+	plot (Rigor Collab_Teachers Supp_Env)*Stu_Ach_Rat / boxstyle=schematic;
+	inset mean stddev min max / position=nw;
+run;
+
+proc datasets library=WORK noprint;
+	delete TempSorted2236;
+	run;
