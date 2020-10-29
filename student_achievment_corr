@@ -1,0 +1,7 @@
+ods noproctitle;
+ods graphics / imagemap=on;
+
+proc corr data=WORK.IMPORT pearson cov nosimple plots(maxpoints=none)=matrix;
+	var Rigor Collab_Teachers Supp_Env;
+	with Stu_Ach_Rat;
+run;
