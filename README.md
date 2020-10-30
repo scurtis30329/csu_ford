@@ -31,3 +31,6 @@ Then you will need to add the SAS download – that is why you needed to know wh
 it. You will also configure SAS to see that shared folder you created in the early steps. Remember this
 folder will be one that SAS can see and your operating system can see – you will use it to pass information back and
 forth to your SAS program. 
+
+
+http://documentation.sas.com/?cdcId=sasstudiocdc&cdcVersion=3.8&docsetId=webeditorgs&docsetTarget=titlepage.htm&locale=en&requestor=inapp
