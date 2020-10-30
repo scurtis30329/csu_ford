@@ -44,4 +44,4 @@
   
   description: correlation statistics for collaborative teaching
   
-  4)You may need to modify the work import name, depending on how many files are open, but once you copy in the code, it is ready to be processed.  If you choose not the use the code, other tools templates are available .
+  4)You may need to modify the work import name, depending on how many files are open, but once you copy in the code, it is ready to be processed.  If you choose not the use the code, other tools templates are available under Task and Utilities .
